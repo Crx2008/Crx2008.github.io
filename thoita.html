@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>thoita</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="user-scalable=no, width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+
+    <meta name="application-name" content="thoita">
+    <meta name="description" content="Welcome to thoita, an online multiplayer game!">
+    <meta name="msapplication-TileColor" content="#181818">
+    <meta name="theme-color" content="#181818">
+
+    <link href="style.css?v=5f071f30" rel="stylesheet" type="text/css" type='text/css'/>
+    <script src="msgpackr.js?v=5f071f30"></script>
+    
+    <!-- PixiJS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.3.2/pixi.min.js"></script>
+  </head>
+  <body>
+    <div class="loader">Loading...</div>
+
+    <div class="login-menu hidden">
+      <div class="input-area">
+        <div class="title login-title" stroke="Create Account"></div>
+        <div class="username-label" stroke="Username"></div>
+        <input class="textbox username" type="text" tabindex="-1" maxlength="16" autocomplete="off" spellcheck="false">
+        <div class="spacer"></div>
+        <div class="password-label" stroke="Password"></div>
+        <input class="textbox password" type="password" tabindex="-1" autocomplete="off" spellcheck="false">
+        <!--<div class="betakey-label" stroke="Beta Key"></div>
+        <input class="textbox betakey" type="text" tabindex="-1" autocomplete="off" spellcheck="false">-->
+
+        <div class="btn login-switch-btn">
+          <span stroke="Switch to Login" class="login-switch-text"></span>
+        </div>
+        <div class="btn send-btn">
+          <span stroke="Create Account" class="send-text"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu">
+      <div class="grid">
+        <input class="textbox nickname" type="text" tabindex="-1" maxlength="16" autocomplete="off" spellcheck="false" placeholder="This pretty flower is called...">
+        <div class="btn play-btn">
+          <span stroke="Play" class="play-text"></span>
+        </div>
+      </div>
+      <div class="links">
+        <div id="settingsButton" title="Settings">
+          <span style="font-size: 24px;">⚙️</span>
+        </div>
+        <div id="shopButton" title="Shop">
+          <span style="font-size: 24px;">🛒</span>
+        </div>
+        <div id="fullscreenButton" title="全屏" class="mobile-only">
+          <span style="font-size: 24px;">⛶</span>
+        </div>
+        <!-- discordButton removed -->
+        <!-- changelogButton removed -->
+        
+        <!-- <div id="florrButton">
+          <a href="https://florr.io/" target="_blank" title="Check out the game this was based on, florr.io!">
+            <img id="editorImg" src="gfx/flower.png?v=5f071f30" draggable="false" width="32" height="32">
+          </a>
+        </div> -->
+        
+      </div>
+      <div class="globalInventory">
+        <input id="petalsearch" class="textbox dummy-input" type="text" tabindex="-2" maxlength="20" autocomplete="off" spellcheck="false">
+      </div>
+
+    </div>
+
+    <div class="chatContainer hidden">
+      <input class="chat" type="text" autocomplete="off" spellcheck="false" maxlength="300"> <!--placeholder="Type here to chat!"-->
+      <div class="chat-div">
+      </div>
+    </div>
+    
+      
+    <canvas id="canvas" width="1280" height="720" style="z-index: -1"></canvas>
+
+    <!-- PixiJS 模块 -->
+    <script src="pixi/PixiApp.js?v=2"></script>
+    <script src="pixi/PixiRenderer.js?v=4"></script>
+    <script src="pixi/utils/TextureCache.js?v=1"></script>
+    <script src="pixi/utils/ShapeConverter.js?v=1"></script>
+    <script src="pixi/utils/CameraController.js?v=1"></script>
+    <script src="pixi/layers/BackgroundLayer.js?v=1"></script>
+    <script src="pixi/layers/GridLayer.js?v=1"></script>
+    <script src="pixi/layers/WorldBorderLayer.js?v=1"></script>
+    <!-- Phase 2: 敌人渲染 -->
+    <script src="pixi/utils/SpritePool.js?v=2"></script>
+    <script src="pixi/entities/PixiEnemy.js?v=2"></script>
+    <script src="pixi/layers/EnemyLayer.js?v=2"></script>
+    <script src="pixi/test-phase0.js?v=1"></script>
+    <script src="pixi/test-phase1.js?v=1"></script>
+
+    <!-- 全局变量初始化 - 必须在其他脚本之前 -->
+    <script>
+      // 确保所有需要的 DOM 元素引用在脚本加载前就存在
+      (function() {
+        window.mobileDiv = document.querySelector('.mobile');
+        window.chatDiv = document.querySelector('.chatContainer');
+        window.chatMsgContainer = document.querySelector('.chat-div');
+        window.chatInput = document.querySelector('.chat');
+        window.mobile = false;
+      })();
+    </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+    <script src="constants.obfuscated.s.js?v=FIXED"></script>
+    <script src="util.obfuscated.s.js?v=FIXED4"></script>
+    <script src="system/characterSelector.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/input.obfuscated.s.js?v=FIXED6"></script>
+    <script src="system/deadMenu.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/streakMenu.obfuscated.s.js?v=FIXED5"></script>
+    <script src="petalContainer.obfuscated.s.js?v=FIXED8"></script>
+    <script src="system/manaBar.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/levelBar.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/menu.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/inventory.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/squad.obfuscated.s.js?v=FIXED7"></script>
+    <script src="enemy.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/enemyBox.obfuscated.s.js?v=FIXED5"></script>
+    <script src="petal.obfuscated.s.js?v=FIXED5"></script>
+    <script src="flower.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/mobPlayer.obfuscated.s.js?v=FIXED1"></script>
+    <script src="system/mobSkillUI.obfuscated.s.js?v=FIXED1"></script>
+    <script src="system/runGame.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/processGameMessage.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/processMenuMessage.obfuscated.s.js?v=FIXED6"></script>
+    <script src="system/collectedMenu.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/room.obfuscated.s.js?v=FIXED5"></script>
+    <script src="game.obfuscated.s.js?v=FIXED5"></script>
+    <script src="renderGame.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/globalInventory.obfuscated.s.js?v=FIXED30"></script>
+    <script src="system/specialGlobalInventory.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/craftingMenu.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/mobGallery.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/shop.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/performanceProfiler.js?v=FIXED8"></script>
+    <script src="render.obfuscated.s.js?v=FIXED12"></script>
+    <script src="sharedWithEditor.obfuscated.s.js?v=FIXED5"></script>
+    <script src="stats.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/biomeManager.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/statsBox.obfuscated.s.js?v=FIXED11"></script>
+    <script src="system/settingsMenu.obfuscated.s.js?v=FIXED5"></script>
+    <script src="client.obfuscated.s.js?v=FIXED6"></script>
+    <script src="system/account.obfuscated.s.js?v=FIXED5"></script>
+    <script src="system/weatherUI.obfuscated.s.js?v=FIXED1"></script>
+
+    <!-- Squad Code Modal -->
+    <div id="squadCodeModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Join Private Squad</h2>
+                <button id="squadCodeClose" class="modal-close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Enter Squad Code:</p>
+                <input id="squadCodeInput" class="textbox" type="text" maxlength="20" autocomplete="off" spellcheck="false" placeholder="Enter squad code">
+            </div>
+            <div class="modal-footer">
+                <button id="squadCodeJoin" class="btn">Join</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Info Modal -->
+    <div id="accountInfoModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Account Information</h2>
+                <button id="accountInfoClose" class="modal-close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="account-info-item">
+                    <span class="info-label">Username:</span>
+                    <span id="accountInfoUsername" class="info-value">Unknown</span>
+                </div>
+                <div class="account-info-item">
+                    <span class="info-label">Unique Code:</span>
+                    <span id="accountInfoUniqueCode" class="info-value">Not generated</span>
+                </div>
+                <div class="account-info-item">
+                    <span class="info-label">Bound QQ:</span>
+                    <span id="accountInfoQQ" class="info-value">Not bound</span>
+                </div>
+                <div class="account-info-note">
+                    <p>Use your unique code to bind your QQ account with the bot.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="accountInfoOK" class="btn">OK</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
