@@ -118,7 +118,7 @@ let popAudio, processGameMessageMap = {
                 else {
                     console['log']('🏠\x20[backToMenu]\x20返回菜单'), window['state'] = 'menu', window['spectating'] = ![], menuEnemiesInitialized = ![];
                     window['runInterval'] && clearInterval(window['runInterval']);
-                    resetPixiJS();
+                    //resetPixiJS();
                     if (_0x2144c1['initInventory']) {
                         globalInventory['petalContainers'] = {}, specialGlobalInventory['petalContainers'] = {}, craftingMenu['petalContainers'] = {}, craftingMenu['fillerPetalSlots'] = {}, craftingMenu['recalculateTypeIndexes'](), levelBar['init'](_0x2144c1['initInventory']['xp']), levelBar['calculateDimensions']();
                         const _0x3a340e = new Set([
@@ -409,7 +409,7 @@ let popAudio, processGameMessageMap = {
                     'availableSkillPoints': _0x51aa60['initInventory']['availableSkillPoints'] || 0x0
                 }), console['log']('✅\x20[退出游戏]\x20背包数据已重新加载，花瓣数量:', _0x51aa60['initInventory']['petals']['length']);
             }
-            clearInterval(window['runInterval']), resetPixiJS(), document['querySelector']('.menu')['style']['display'] = '', squadUI = new SquadUI(), closeSquadUI(), window['selfId'] = null, window['state'] = 'menu', window['spectating'] = ![], menuEnemiesInitialized = ![], deadMenu = new DeadMenu(), room = new Room(), collectedMenu = new CollectedMenu(), bosses = [], totalBossHealth = 0x0, bossCount = 0x0, window['mobile'] === !![] && mobileDiv['classList']['add']('hidden'), window['isEditor'] !== !![] && (chatDiv['classList']['add']('hidden'), inputHandler['chatOpen'] = ![], chatInput['value'] = '', chatInput['style']['opacity'] = '0', chatInput['blur']()), window['is3D'] === !![] && window['unInit3D'](), delete window['isDead'], delete window['hasWonPvp'], delete window['inMainPvpRoom'], delete window['hasWonPvp'], delete window['inMainPvpRoom'];
+            clearInterval(window['runInterval']), document['querySelector']('.menu')['style']['display'] = '', squadUI = new SquadUI(), closeSquadUI(), window['selfId'] = null, window['state'] = 'menu', window['spectating'] = ![], menuEnemiesInitialized = ![], deadMenu = new DeadMenu(), room = new Room(), collectedMenu = new CollectedMenu(), bosses = [], totalBossHealth = 0x0, bossCount = 0x0, window['mobile'] === !![] && mobileDiv['classList']['add']('hidden'), window['isEditor'] !== !![] && (chatDiv['classList']['add']('hidden'), inputHandler['chatOpen'] = ![], chatInput['value'] = '', chatInput['style']['opacity'] = '0', chatInput['blur']()), window['is3D'] === !![] && window['unInit3D'](), delete window['isDead'], delete window['hasWonPvp'], delete window['inMainPvpRoom'], delete window['hasWonPvp'], delete window['inMainPvpRoom'];
         },
         'tooManyEnemies': _0x3afc7a => {
             alert('Too\x20many\x20enemies!\x20Game\x20Closing!'), window['onbeforeunload'] = () => {
