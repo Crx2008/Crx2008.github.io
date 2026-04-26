@@ -13053,21 +13053,36 @@ const attackPetalDistanceMult = 1.91, defendPetalDistanceMult = 0.6, petal_damag
                 'damageScalers': [],
                 'healthScalers': []
             },
-            'Chimera': {
-                'damage': 0x0,
-                'health': 0xc9f2c9cd04675000000000000,
-                'reload': 0x3,
-                'petalLayout': [[{}]],
-                'damageScalers': [],
-                'healthScalers': []
-            },
             'Scorched\x20Artifact': {
                 'damage': 0x0,
                 'health': 0xc9f2c9cd04675000000000000,
                 'reload': 0x3,
                 'petalLayout': [[{}]],
                 'damageScalers': [],
-                'healthScalers': []
+                'healthScalers': [],
+                'healMultiplier': 1.2,
+                'squadHealShare': 0.33,
+                'description': ['Enhances\x20healing\x20and\x20provides\x20squad\x20buffs']
+            },
+            'Chimera': {
+                'damage': 0x0,
+                'health': 0xc9f2c9cd04675000000000000,
+                'reload': 0x3,
+                'petalLayout': [[{}]],
+                'damageScalers': [],
+                'healthScalers': [],
+                'mobDamageMultiplier': 1.5,
+                'mobSpeedMultiplier': 0x1,
+                'mobHpMultiplier': 0x1,
+                'abilityCooldown': 0xa,
+                'description': [
+                    'Transform\x20into\x20a\x20powerful\x20',
+                    {
+                        'text': 'mob',
+                        'color': '#9932cc'
+                    },
+                    '\x20with\x20unique\x20abilities'
+                ]
             },
             'Abyssal\x20Artifact': {
                 'damage': 0x0,
@@ -13075,7 +13090,38 @@ const attackPetalDistanceMult = 1.91, defendPetalDistanceMult = 0.6, petal_damag
                 'reload': 0x3,
                 'petalLayout': [[{}]],
                 'damageScalers': [],
-                'healthScalers': []
+                'healthScalers': [],
+                'eggHpMultiplier': 0x1,
+                'eggMassMultiplier': 0x1,
+                'eggDamageMultiplier': 0x2,
+                'description': [
+                    'Enhances\x20',
+                    {
+                        'text': 'Egg',
+                        'color': '#7eef6d'
+                    },
+                    '\x20petal\x20performance'
+                ]
+            },
+            'Verdant\x20Artifact': {
+                'damage': 0x0,
+                'health': 0xc9f2c9cd04675000000000000,
+                'reload': 0x3,
+                'petalLayout': [[{}]],
+                'damageScalers': [],
+                'healthScalers': [],
+                'dpsMultiplier': 1.1,
+                'description': ['Increases\x20damage\x20output\x20and\x20petal\x20performance']
+            },
+            'Cosmic\x20Artifact': {
+                'damage': 0x0,
+                'health': 0xc9f2c9cd04675000000000000,
+                'reload': 0x3,
+                'petalLayout': [[{}]],
+                'damageScalers': [],
+                'healthScalers': [],
+                'hpMultiplier': 1.2,
+                'description': ['Enhances\x20survivability\x20and\x20knockback\x20effects']
             },
             'HornetSting': {
                 'damage': 0xf,
@@ -21834,8 +21880,8 @@ const attackPetalDistanceMult = 1.91, defendPetalDistanceMult = 0.6, petal_damag
             }
         ]
     };
-function getSlowdown(_0x36d141) {
-    const _0x6e69a = [
+function getSlowdown(_0x5a14de) {
+    const _0x277e56 = [
             [
                 0x61a8,
                 0x1d4c,
@@ -21883,7 +21929,7 @@ function getSlowdown(_0x36d141) {
                 5.4e-24,
                 5.4e-25
             ]
-        ], _0x493ce6 = [
+        ], _0x34e242 = [
             [
                 0x0,
                 -1.4,
@@ -21942,46 +21988,46 @@ function getSlowdown(_0x36d141) {
                 -0x19,
                 -0x1a
             ]
-        ], _0x856dbe = [
+        ], _0x218776 = [
             [],
             []
         ];
-    for (let _0x38b6ea = 0x0; _0x38b6ea < _0x493ce6['length']; _0x38b6ea++) {
-        for (let _0x9237cd = 0x0; _0x9237cd < _0x493ce6[_0x38b6ea]['length']; _0x9237cd++) {
-            if (_0x9237cd === 0x0)
-                _0x856dbe[_0x38b6ea]['push'](0x0);
+    for (let _0x3bb8fa = 0x0; _0x3bb8fa < _0x34e242['length']; _0x3bb8fa++) {
+        for (let _0xce3d66 = 0x0; _0xce3d66 < _0x34e242[_0x3bb8fa]['length']; _0xce3d66++) {
+            if (_0xce3d66 === 0x0)
+                _0x218776[_0x3bb8fa]['push'](0x0);
             else
-                _0x856dbe[_0x38b6ea]['push'](0x1 - Math['exp'](_0x493ce6[_0x38b6ea][_0x9237cd]));
+                _0x218776[_0x3bb8fa]['push'](0x1 - Math['exp'](_0x34e242[_0x3bb8fa][_0xce3d66]));
         }
     }
-    const _0x1dfe7c = new Array(0x23)['fill'](0x0)['map'](_0x2443f4 => new Array(0x24)['fill'](0x0));
-    for (let _0x58412c = 0x0; _0x58412c < 0x23; ++_0x58412c) {
-        let _0x5767fb = 0x0, _0x344e07 = 0x0, _0x1a13c7 = 0x0;
-        _0x58412c >= 0xf && (_0x5767fb = 0x1, _0x344e07 = 0xf, _0x1a13c7 = 0xf);
-        const _0x4242c1 = _0x6e69a[_0x5767fb][_0x58412c - _0x344e07] ?? _0x6e69a[_0x5767fb]['at'](-0x1);
-        for (let _0x406ee1 = 0x0; _0x406ee1 < _0x1a13c7; ++_0x406ee1) {
-            _0x1dfe7c[_0x58412c][_0x406ee1] = _0x36d141 * 0x64;
+    const _0x2c725d = new Array(0x23)['fill'](0x0)['map'](_0x3474ef => new Array(0x24)['fill'](0x0));
+    for (let _0x12d376 = 0x0; _0x12d376 < 0x23; ++_0x12d376) {
+        let _0x2f09d4 = 0x0, _0x386359 = 0x0, _0x4c4afb = 0x0;
+        _0x12d376 >= 0xf && (_0x2f09d4 = 0x1, _0x386359 = 0xf, _0x4c4afb = 0xf);
+        const _0x2d0b5e = _0x277e56[_0x2f09d4][_0x12d376 - _0x386359] ?? _0x277e56[_0x2f09d4]['at'](-0x1);
+        for (let _0x51efcc = 0x0; _0x51efcc < _0x4c4afb; ++_0x51efcc) {
+            _0x2c725d[_0x12d376][_0x51efcc] = _0x5a14de * 0x64;
         }
-        let _0xefab94 = 0x64;
-        for (let _0x33e837 = 0x0; _0x33e837 <= _0x856dbe[_0x5767fb]['length']; ++_0x33e837) {
-            let _0x4dfa35 = _0x856dbe[_0x5767fb][_0x33e837], _0x38496b = _0x856dbe[_0x5767fb][_0x33e837 + 0x1];
-            if (_0x38496b === undefined)
-                _0x38496b = 0x1;
-            const _0x21a7d4 = Math['pow'](_0x36d141 * _0x4dfa35 + (0x1 - _0x36d141), 0x493e0 / _0x4242c1), _0x54080d = Math['pow'](_0x36d141 * _0x38496b + (0x1 - _0x36d141), 0x493e0 / _0x4242c1), _0x39c477 = Math['max']((_0xefab94 * _0x36d141)['toFixed'](0x2), 0x0);
-            _0x1dfe7c[_0x58412c][_0x33e837 + _0x1a13c7] = _0x39c477, _0xefab94 -= 0x64 * (_0x54080d - _0x21a7d4);
+        let _0x24873a = 0x64;
+        for (let _0x2b0f84 = 0x0; _0x2b0f84 <= _0x218776[_0x2f09d4]['length']; ++_0x2b0f84) {
+            let _0x5c3b4d = _0x218776[_0x2f09d4][_0x2b0f84], _0x16e564 = _0x218776[_0x2f09d4][_0x2b0f84 + 0x1];
+            if (_0x16e564 === undefined)
+                _0x16e564 = 0x1;
+            const _0x5683d0 = Math['pow'](_0x5a14de * _0x5c3b4d + (0x1 - _0x5a14de), 0x493e0 / _0x2d0b5e), _0x38d7d4 = Math['pow'](_0x5a14de * _0x16e564 + (0x1 - _0x5a14de), 0x493e0 / _0x2d0b5e), _0x3201b2 = Math['max']((_0x24873a * _0x5a14de)['toFixed'](0x2), 0x0);
+            _0x2c725d[_0x12d376][_0x2b0f84 + _0x4c4afb] = _0x3201b2, _0x24873a -= 0x64 * (_0x38d7d4 - _0x5683d0);
         }
-        if (_0x1dfe7c[_0x58412c][0x24] >= 0x0 && _0x58412c < 0x3) {
-            const _0x4886f6 = _0x1dfe7c[_0x58412c][0x24];
-            for (let _0xec3784 = 0x0; _0xec3784 <= 0x24; ++_0xec3784) {
-                _0x1dfe7c[_0x58412c][_0xec3784] = Math['max']((_0x1dfe7c[_0x58412c][_0xec3784] - _0x4886f6)['toFixed'](0x2), 0x0);
+        if (_0x2c725d[_0x12d376][0x24] >= 0x0 && _0x12d376 < 0x3) {
+            const _0x32830a = _0x2c725d[_0x12d376][0x24];
+            for (let _0x584512 = 0x0; _0x584512 <= 0x24; ++_0x584512) {
+                _0x2c725d[_0x12d376][_0x584512] = Math['max']((_0x2c725d[_0x12d376][_0x584512] - _0x32830a)['toFixed'](0x2), 0x0);
             }
         }
     }
-    for (let _0x931a25 of _0x1dfe7c) {
-        for (let _0x13ad91 = 0x0; _0x13ad91 < 0x6; _0x13ad91++)
-            _0x931a25['push'](0x0);
+    for (let _0x2120ce of _0x2c725d) {
+        for (let _0x4c665c = 0x0; _0x4c665c < 0x6; _0x4c665c++)
+            _0x2120ce['push'](0x0);
     }
-    return _0x1dfe7c;
+    return _0x2c725d;
 }
 let Stats = {
     'petals': {},
@@ -22013,9 +22059,9 @@ let pvpStats = structuredClone(Stats), tsStats = structuredClone(Stats), squareR
         'Baby\x20Termite': 1.2,
         'Gnat': 1.25
     }, raritiesAmount = BaseStats['rarities']['length'];
-function calculateDrops(_0x2a0bf3, _0x1891ca, _0x723264) {
-    !_0x723264 && (_0x723264 = 0x0);
-    const _0x5ccd08 = [
+function calculateDrops(_0x4db773, _0x3eb993, _0x48c57d) {
+    !_0x48c57d && (_0x48c57d = 0x0);
+    const _0x4416be = [
             [
                 0x56ab8,
                 0x1174c,
@@ -22057,7 +22103,7 @@ function calculateDrops(_0x2a0bf3, _0x1891ca, _0x723264) {
                 0.000002,
                 3e-7
             ]
-        ], _0x30e915 = [
+        ], _0x271f2 = [
             [
                 0x0,
                 -2.2,
@@ -22111,145 +22157,145 @@ function calculateDrops(_0x2a0bf3, _0x1891ca, _0x723264) {
                 -40.5,
                 -0x2a
             ]
-        ], _0x27e788 = [
+        ], _0x196066 = [
             [],
             [],
             []
         ];
-    for (let _0x52c978 = 0x0; _0x52c978 < 0x3; _0x52c978++) {
-        for (let _0x38ee74 = 0x0; _0x38ee74 < _0x30e915[_0x52c978]['length']; _0x38ee74++) {
-            _0x38ee74 == 0x0 ? _0x27e788[_0x52c978]['push'](0x0) : _0x27e788[_0x52c978]['push'](0x1 - Math['pow'](Math['E'], _0x30e915[_0x52c978][_0x38ee74]));
+    for (let _0x17ad06 = 0x0; _0x17ad06 < 0x3; _0x17ad06++) {
+        for (let _0x27aed0 = 0x0; _0x27aed0 < _0x271f2[_0x17ad06]['length']; _0x27aed0++) {
+            _0x27aed0 == 0x0 ? _0x196066[_0x17ad06]['push'](0x0) : _0x196066[_0x17ad06]['push'](0x1 - Math['pow'](Math['E'], _0x271f2[_0x17ad06][_0x27aed0]));
         }
     }
-    const _0x9c1024 = new Array(0x23)['fill'](0x0)['map'](_0x5f4f0c => new Array(0x12)['fill'](0x0));
-    for (let _0x572987 = 0x0; _0x572987 < 0x23; ++_0x572987) {
-        let _0x5619d8 = _0x572987 ? _0x572987 : 0x0;
-        _0x572987 > 0x4 && (_0x5619d8 = _0x572987 - 0x1);
-        _0x572987 > 0x8 && (_0x5619d8 = _0x572987 - 0x2);
-        _0x572987 > 0xe && (_0x5619d8 = _0x572987 - 0x3);
-        _0x572987 > 0x10 && (_0x5619d8 = _0x572987 - 0x4);
-        _0x572987 > 0x12 && (_0x5619d8 = _0x572987 - 0x2);
-        _0x572987 > 0x13 && (_0x5619d8 = _0x572987 - 0x3);
-        _0x572987 > 0x15 && (_0x5619d8 = _0x572987 - 0x4);
-        _0x572987 > 0x1a && (_0x5619d8 = _0x572987 - 0x5);
-        _0x572987 > 0x1c && (_0x5619d8 = _0x572987 - 0x6);
-        _0x572987 > 0x1e && (_0x5619d8 = _0x572987 - 0x7);
-        _0x572987 > 0x20 && (_0x5619d8 = _0x572987 - 0x8);
-        let _0x5b4058 = 0x0, _0x44e254 = 0x0, _0x201184 = 0x0;
-        if (_0x572987 > 0x12)
-            _0x5b4058 = 0x2, _0x44e254 = 0x13, _0x201184 = 0xc, _0x5619d8 -= _0x201184;
+    const _0x420270 = new Array(0x23)['fill'](0x0)['map'](_0x3503a3 => new Array(0x12)['fill'](0x0));
+    for (let _0x4d7414 = 0x0; _0x4d7414 < 0x23; ++_0x4d7414) {
+        let _0x2d9399 = _0x4d7414 ? _0x4d7414 : 0x0;
+        _0x4d7414 > 0x4 && (_0x2d9399 = _0x4d7414 - 0x1);
+        _0x4d7414 > 0x8 && (_0x2d9399 = _0x4d7414 - 0x2);
+        _0x4d7414 > 0xe && (_0x2d9399 = _0x4d7414 - 0x3);
+        _0x4d7414 > 0x10 && (_0x2d9399 = _0x4d7414 - 0x4);
+        _0x4d7414 > 0x12 && (_0x2d9399 = _0x4d7414 - 0x2);
+        _0x4d7414 > 0x13 && (_0x2d9399 = _0x4d7414 - 0x3);
+        _0x4d7414 > 0x15 && (_0x2d9399 = _0x4d7414 - 0x4);
+        _0x4d7414 > 0x1a && (_0x2d9399 = _0x4d7414 - 0x5);
+        _0x4d7414 > 0x1c && (_0x2d9399 = _0x4d7414 - 0x6);
+        _0x4d7414 > 0x1e && (_0x2d9399 = _0x4d7414 - 0x7);
+        _0x4d7414 > 0x20 && (_0x2d9399 = _0x4d7414 - 0x8);
+        let _0x510243 = 0x0, _0x252fa5 = 0x0, _0x4b23be = 0x0;
+        if (_0x4d7414 > 0x12)
+            _0x510243 = 0x2, _0x252fa5 = 0x13, _0x4b23be = 0xc, _0x2d9399 -= _0x4b23be;
         else
-            _0x572987 > 0x9 && (_0x5b4058 = 0x1, _0x44e254 = 0xa, _0x201184 = 0x6, _0x5619d8 -= _0x201184);
-        for (let _0x5a8774 = 0x0; _0x5a8774 <= _0x5619d8; ++_0x5a8774) {
-            if (_0x5a8774 > 0x17)
+            _0x4d7414 > 0x9 && (_0x510243 = 0x1, _0x252fa5 = 0xa, _0x4b23be = 0x6, _0x2d9399 -= _0x4b23be);
+        for (let _0x4cc1b0 = 0x0; _0x4cc1b0 <= _0x2d9399; ++_0x4cc1b0) {
+            if (_0x4cc1b0 > 0x17)
                 break;
-            if (_0x5a8774 + _0x201184 < _0x1891ca)
+            if (_0x4cc1b0 + _0x4b23be < _0x3eb993)
                 continue;
-            let _0x9f88d6 = _0x27e788[_0x5b4058][_0x5a8774], _0x5b77b1 = _0x27e788[_0x5b4058][_0x5a8774 + 0x1];
-            if (_0x5a8774 === _0x5619d8)
-                _0x5b77b1 = 0x1;
-            const _0x1298de = Math['pow'](_0x2a0bf3 * _0x9f88d6 + (0x1 - _0x2a0bf3), 0x493e0 / _0x5ccd08[_0x5b4058][_0x572987 - _0x44e254]), _0x344917 = Math['pow'](_0x2a0bf3 * _0x5b77b1 + (0x1 - _0x2a0bf3), 0x493e0 / _0x5ccd08[_0x5b4058][_0x572987 - _0x44e254]);
-            _0x572987 >= _0x723264 && (_0x9c1024[_0x572987][_0x5a8774 + _0x201184] = parseFloat((0x64 * (_0x344917 - _0x1298de))['toFixed'](0x3)));
+            let _0x34d5f8 = _0x196066[_0x510243][_0x4cc1b0], _0x33ada1 = _0x196066[_0x510243][_0x4cc1b0 + 0x1];
+            if (_0x4cc1b0 === _0x2d9399)
+                _0x33ada1 = 0x1;
+            const _0x2ad605 = Math['pow'](_0x4db773 * _0x34d5f8 + (0x1 - _0x4db773), 0x493e0 / _0x4416be[_0x510243][_0x4d7414 - _0x252fa5]), _0x3acb01 = Math['pow'](_0x4db773 * _0x33ada1 + (0x1 - _0x4db773), 0x493e0 / _0x4416be[_0x510243][_0x4d7414 - _0x252fa5]);
+            _0x4d7414 >= _0x48c57d && (_0x420270[_0x4d7414][_0x4cc1b0 + _0x4b23be] = parseFloat((0x64 * (_0x3acb01 - _0x2ad605))['toFixed'](0x3)));
         }
     }
-    return _0x9c1024;
+    return _0x420270;
 }
-globalThis['calculateStats'] = (_0x3580bf = ![], _0x2dd646 = ![]) => {
-    for (let _0x3d28b3 in BaseStats['enemies']) {
-        Stats['enemies'][_0x3d28b3] = {};
-        for (let _0x51fbb6 = 0x0; _0x51fbb6 < raritiesAmount; _0x51fbb6++) {
-            if (_0x51fbb6 == 0x0)
-                Stats['enemies'][_0x3d28b3][_0x51fbb6] = structuredClone(BaseStats['enemies'][_0x3d28b3]), BaseStats['enemies'][_0x3d28b3]['xp'] == undefined && (Stats['enemies'][_0x3d28b3][_0x51fbb6]['xp'] = Math['round'](BaseStats['rarities'][_0x51fbb6]['xp']));
+globalThis['calculateStats'] = (_0xdba838 = ![], _0xb068fa = ![]) => {
+    for (let _0x3c13a3 in BaseStats['enemies']) {
+        Stats['enemies'][_0x3c13a3] = {};
+        for (let _0x2b74a0 = 0x0; _0x2b74a0 < raritiesAmount; _0x2b74a0++) {
+            if (_0x2b74a0 == 0x0)
+                Stats['enemies'][_0x3c13a3][_0x2b74a0] = structuredClone(BaseStats['enemies'][_0x3c13a3]), BaseStats['enemies'][_0x3c13a3]['xp'] == undefined && (Stats['enemies'][_0x3c13a3][_0x2b74a0]['xp'] = Math['round'](BaseStats['rarities'][_0x2b74a0]['xp']));
             else {
-                let _0x16b8f2 = {};
-                _0x16b8f2 = structuredClone(Stats['enemies'][_0x3d28b3][_0x51fbb6 - 0x1]), _0x16b8f2['health'] = Math['round'](_0x16b8f2['health'] * BaseStats['rarities'][_0x51fbb6]['health'] / BaseStats['rarities'][_0x51fbb6 - 0x1]['health'] * 0x64) / 0x64, _0x16b8f2['damage'] = Math['round'](_0x16b8f2['damage'] * BaseStats['rarities'][_0x51fbb6]['damage'] / BaseStats['rarities'][_0x51fbb6 - 0x1]['damage'] * 0x64) / 0x64;
-                if (_0x16b8f2['armor'])
-                    _0x16b8f2['armor'] = Math['round'](_0x16b8f2['armor'] * BaseStats['rarities'][_0x51fbb6]['health'] / BaseStats['rarities'][_0x51fbb6 - 0x1]['health'] * 0x64) / 0x64;
-                Object['keys'](smallerEnemies)['includes'](_0x3d28b3) && _0x51fbb6 < 0x8 ? _0x16b8f2['radius'] = Math['round'](_0x16b8f2['radius'] * ((BaseStats['rarities'][_0x51fbb6]['radius'] / BaseStats['rarities'][_0x51fbb6 - 0x1]['radius'] - 0x1) / smallerEnemies[_0x3d28b3] + 0x1) * 0x64) / 0x64 : _0x16b8f2['radius'] = Math['round'](_0x16b8f2['radius'] * BaseStats['rarities'][_0x51fbb6]['radius'] / BaseStats['rarities'][_0x51fbb6 - 0x1]['radius'] * 0x64) / 0x64;
-                _0x16b8f2['xp'] = Math['round'](_0x16b8f2['xp'] * BaseStats['rarities'][_0x51fbb6]['xp'] / BaseStats['rarities'][_0x51fbb6 - 0x1]['xp'] * 0x64) / 0x64, _0x16b8f2['mass'] = Math['round'](_0x16b8f2['mass'] * BaseStats['rarities'][_0x51fbb6]['mass'] / BaseStats['rarities'][_0x51fbb6 - 0x1]['mass'] * 0x64) / 0x64, _0x16b8f2['detectionDistance'] = Math['round'](_0x16b8f2['detectionDistance'] * BaseStats['rarities'][_0x51fbb6]['detectionDistance'] / BaseStats['rarities'][_0x51fbb6 - 0x1]['detectionDistance'] * 0x64) / 0x64;
-                _0x16b8f2['poison'] && (_0x16b8f2['poison'][0x0] = Math['round'](_0x16b8f2['poison'][0x0] * BaseStats['rarities'][_0x51fbb6]['damage'] / BaseStats['rarities'][_0x51fbb6 - 0x1]['damage'] * 0x64) / 0x64, _0x16b8f2['poison'][0x1] = Math['round'](_0x16b8f2['poison'][0x1] * BaseStats['rarities'][_0x51fbb6]['damage'] / BaseStats['rarities'][_0x51fbb6 - 0x1]['damage'] * 0x64) / 0x64);
-                _0x16b8f2['summonBodyPoison'] && (_0x16b8f2['summonBodyPoison'][0x0] = Math['round'](_0x16b8f2['summonBodyPoison'][0x0] * BaseStats['rarities'][_0x51fbb6]['damage'] / BaseStats['rarities'][_0x51fbb6 - 0x1]['damage'] * 0x64) / 0x64, _0x16b8f2['summonBodyPoison'][0x1] = Math['round'](_0x16b8f2['summonBodyPoison'][0x1] * BaseStats['rarities'][_0x51fbb6]['damage'] / BaseStats['rarities'][_0x51fbb6 - 0x1]['damage'] * 0x64) / 0x64);
-                _0x16b8f2['flowerBodyPoison'] && (_0x16b8f2['flowerBodyPoison'][0x0] = Math['round'](_0x16b8f2['flowerBodyPoison'][0x0] * BaseStats['rarities'][_0x51fbb6]['damage'] / BaseStats['rarities'][_0x51fbb6 - 0x1]['damage'] * 0x64) / 0x64, _0x16b8f2['flowerBodyPoison'][0x1] = Math['round'](_0x16b8f2['flowerBodyPoison'][0x1] * BaseStats['rarities'][_0x51fbb6]['damage'] / BaseStats['rarities'][_0x51fbb6 - 0x1]['damage'] * 0x64) / 0x64);
-                for (let _0x578fce in Stats['enemies'][_0x3d28b3][_0x51fbb6 - 0x1]) {
-                    BaseStats['enemies'][_0x3d28b3]['override'] != undefined && (BaseStats['enemies'][_0x3d28b3]['override'][_0x51fbb6] != undefined && (Object['keys'](BaseStats['enemies'][_0x3d28b3]['override'][_0x51fbb6])['includes'](_0x578fce) && (_0x16b8f2[_0x578fce] = BaseStats['enemies'][_0x3d28b3]['override'][_0x51fbb6][_0x578fce])));
+                let _0x53ce15 = {};
+                _0x53ce15 = structuredClone(Stats['enemies'][_0x3c13a3][_0x2b74a0 - 0x1]), _0x53ce15['health'] = Math['round'](_0x53ce15['health'] * BaseStats['rarities'][_0x2b74a0]['health'] / BaseStats['rarities'][_0x2b74a0 - 0x1]['health'] * 0x64) / 0x64, _0x53ce15['damage'] = Math['round'](_0x53ce15['damage'] * BaseStats['rarities'][_0x2b74a0]['damage'] / BaseStats['rarities'][_0x2b74a0 - 0x1]['damage'] * 0x64) / 0x64;
+                if (_0x53ce15['armor'])
+                    _0x53ce15['armor'] = Math['round'](_0x53ce15['armor'] * BaseStats['rarities'][_0x2b74a0]['health'] / BaseStats['rarities'][_0x2b74a0 - 0x1]['health'] * 0x64) / 0x64;
+                Object['keys'](smallerEnemies)['includes'](_0x3c13a3) && _0x2b74a0 < 0x8 ? _0x53ce15['radius'] = Math['round'](_0x53ce15['radius'] * ((BaseStats['rarities'][_0x2b74a0]['radius'] / BaseStats['rarities'][_0x2b74a0 - 0x1]['radius'] - 0x1) / smallerEnemies[_0x3c13a3] + 0x1) * 0x64) / 0x64 : _0x53ce15['radius'] = Math['round'](_0x53ce15['radius'] * BaseStats['rarities'][_0x2b74a0]['radius'] / BaseStats['rarities'][_0x2b74a0 - 0x1]['radius'] * 0x64) / 0x64;
+                _0x53ce15['xp'] = Math['round'](_0x53ce15['xp'] * BaseStats['rarities'][_0x2b74a0]['xp'] / BaseStats['rarities'][_0x2b74a0 - 0x1]['xp'] * 0x64) / 0x64, _0x53ce15['mass'] = Math['round'](_0x53ce15['mass'] * BaseStats['rarities'][_0x2b74a0]['mass'] / BaseStats['rarities'][_0x2b74a0 - 0x1]['mass'] * 0x64) / 0x64, _0x53ce15['detectionDistance'] = Math['round'](_0x53ce15['detectionDistance'] * BaseStats['rarities'][_0x2b74a0]['detectionDistance'] / BaseStats['rarities'][_0x2b74a0 - 0x1]['detectionDistance'] * 0x64) / 0x64;
+                _0x53ce15['poison'] && (_0x53ce15['poison'][0x0] = Math['round'](_0x53ce15['poison'][0x0] * BaseStats['rarities'][_0x2b74a0]['damage'] / BaseStats['rarities'][_0x2b74a0 - 0x1]['damage'] * 0x64) / 0x64, _0x53ce15['poison'][0x1] = Math['round'](_0x53ce15['poison'][0x1] * BaseStats['rarities'][_0x2b74a0]['damage'] / BaseStats['rarities'][_0x2b74a0 - 0x1]['damage'] * 0x64) / 0x64);
+                _0x53ce15['summonBodyPoison'] && (_0x53ce15['summonBodyPoison'][0x0] = Math['round'](_0x53ce15['summonBodyPoison'][0x0] * BaseStats['rarities'][_0x2b74a0]['damage'] / BaseStats['rarities'][_0x2b74a0 - 0x1]['damage'] * 0x64) / 0x64, _0x53ce15['summonBodyPoison'][0x1] = Math['round'](_0x53ce15['summonBodyPoison'][0x1] * BaseStats['rarities'][_0x2b74a0]['damage'] / BaseStats['rarities'][_0x2b74a0 - 0x1]['damage'] * 0x64) / 0x64);
+                _0x53ce15['flowerBodyPoison'] && (_0x53ce15['flowerBodyPoison'][0x0] = Math['round'](_0x53ce15['flowerBodyPoison'][0x0] * BaseStats['rarities'][_0x2b74a0]['damage'] / BaseStats['rarities'][_0x2b74a0 - 0x1]['damage'] * 0x64) / 0x64, _0x53ce15['flowerBodyPoison'][0x1] = Math['round'](_0x53ce15['flowerBodyPoison'][0x1] * BaseStats['rarities'][_0x2b74a0]['damage'] / BaseStats['rarities'][_0x2b74a0 - 0x1]['damage'] * 0x64) / 0x64);
+                for (let _0x2d7251 in Stats['enemies'][_0x3c13a3][_0x2b74a0 - 0x1]) {
+                    BaseStats['enemies'][_0x3c13a3]['override'] != undefined && (BaseStats['enemies'][_0x3c13a3]['override'][_0x2b74a0] != undefined && (Object['keys'](BaseStats['enemies'][_0x3c13a3]['override'][_0x2b74a0])['includes'](_0x2d7251) && (_0x53ce15[_0x2d7251] = BaseStats['enemies'][_0x3c13a3]['override'][_0x2b74a0][_0x2d7251])));
                 }
-                Stats['enemies'][_0x3d28b3][_0x51fbb6] = _0x16b8f2;
+                Stats['enemies'][_0x3c13a3][_0x2b74a0] = _0x53ce15;
             }
         }
-        let _0x31ef93 = structuredClone(BaseStats['enemies'][_0x3d28b3]['drops']);
-        for (let _0x2245e0 in _0x31ef93) {
-            let _0x536878 = calculateDrops(_0x31ef93[_0x2245e0][0x0], _0x31ef93[_0x2245e0][0x1], _0x31ef93[_0x2245e0][0x2]);
-            for (let _0x1c81d5 in Stats['enemies'][_0x3d28b3]) {
-                if (_0x536878[_0x1c81d5] !== undefined)
-                    Stats['enemies'][_0x3d28b3][_0x1c81d5]['drops'][_0x2245e0] = _0x536878[_0x1c81d5];
+        let _0x47203d = structuredClone(BaseStats['enemies'][_0x3c13a3]['drops']);
+        for (let _0x2d7167 in _0x47203d) {
+            let _0x4f0e8c = calculateDrops(_0x47203d[_0x2d7167][0x0], _0x47203d[_0x2d7167][0x1], _0x47203d[_0x2d7167][0x2]);
+            for (let _0x4e3512 in Stats['enemies'][_0x3c13a3]) {
+                if (_0x4f0e8c[_0x4e3512] !== undefined)
+                    Stats['enemies'][_0x3c13a3][_0x4e3512]['drops'][_0x2d7167] = _0x4f0e8c[_0x4e3512];
                 else
-                    Stats['enemies'][_0x3d28b3][_0x1c81d5]['drops'][_0x2245e0] = {};
+                    Stats['enemies'][_0x3c13a3][_0x4e3512]['drops'][_0x2d7167] = {};
             }
         }
     }
-    for (let _0x56c492 of squareRootHealth) {
-        for (let _0x7f6a47 in Stats['enemies'][_0x56c492]) {
-            Stats['enemies'][_0x56c492][_0x7f6a47]['health'] = Math['round'](Stats['enemies'][_0x56c492][_0x7f6a47]['health'] ** 0.66);
+    for (let _0x10bea8 of squareRootHealth) {
+        for (let _0x36b122 in Stats['enemies'][_0x10bea8]) {
+            Stats['enemies'][_0x10bea8][_0x36b122]['health'] = Math['round'](Stats['enemies'][_0x10bea8][_0x36b122]['health'] ** 0.66);
         }
     }
-    for (let _0x387122 in BaseStats['petals']) {
-        if (_0x387122 != 'default') {
-            let _0x3aebad = BaseStats['petals'][_0x387122];
-            Stats['petals'][_0x387122] = {};
-            for (let _0x2b18fc = 0x0; _0x2b18fc < raritiesAmount; _0x2b18fc++) {
-                if (_0x2b18fc == 0x0) {
-                    Stats['petals'][_0x387122][_0x2b18fc] = structuredClone(BaseStats['petals']['default']);
-                    for (let _0x34e8a7 in _0x3aebad) {
-                        Stats['petals'][_0x387122][_0x2b18fc][_0x34e8a7] = _0x3aebad[_0x34e8a7], _0x3580bf && (_0x3aebad['pvpOverride'] != undefined && (_0x3aebad['pvpOverride'][_0x2b18fc] != undefined && (Object['keys'](_0x3aebad['pvpOverride'][_0x2b18fc])['includes'](_0x34e8a7) && (_0x3aebad['damageScalers']['includes'](_0x34e8a7) || _0x3aebad['healthScalers']['includes'](_0x34e8a7) ? Stats['petals'][_0x387122][_0x2b18fc][_0x34e8a7] *= _0x3aebad['pvpOverride'][_0x2b18fc][_0x34e8a7] : Stats['petals'][_0x387122][_0x2b18fc][_0x34e8a7] = _0x3aebad['pvpOverride'][_0x2b18fc][_0x34e8a7])))), _0x2dd646 && (_0x3aebad['tsPetalOverride'] != undefined && (_0x3aebad['tsPetalOverride'][_0x2b18fc] != undefined && (Object['keys'](_0x3aebad['tsPetalOverride'][_0x2b18fc])['includes'](_0x34e8a7) && (_0x3aebad['damageScalers']['includes'](_0x34e8a7) || _0x3aebad['healthScalers']['includes'](_0x34e8a7) ? Stats['petals'][_0x387122][_0x2b18fc][_0x34e8a7] *= _0x3aebad['tsPetalOverride'][_0x2b18fc][_0x34e8a7] : Stats['petals'][_0x387122][_0x2b18fc][_0x34e8a7] = _0x3aebad['tsPetalOverride'][_0x2b18fc][_0x34e8a7]))));
+    for (let _0x1d5049 in BaseStats['petals']) {
+        if (_0x1d5049 != 'default') {
+            let _0x3d7dc5 = BaseStats['petals'][_0x1d5049];
+            Stats['petals'][_0x1d5049] = {};
+            for (let _0xe818ed = 0x0; _0xe818ed < raritiesAmount; _0xe818ed++) {
+                if (_0xe818ed == 0x0) {
+                    Stats['petals'][_0x1d5049][_0xe818ed] = structuredClone(BaseStats['petals']['default']);
+                    for (let _0x21b428 in _0x3d7dc5) {
+                        Stats['petals'][_0x1d5049][_0xe818ed][_0x21b428] = _0x3d7dc5[_0x21b428], _0xdba838 && (_0x3d7dc5['pvpOverride'] != undefined && (_0x3d7dc5['pvpOverride'][_0xe818ed] != undefined && (Object['keys'](_0x3d7dc5['pvpOverride'][_0xe818ed])['includes'](_0x21b428) && (_0x3d7dc5['damageScalers']['includes'](_0x21b428) || _0x3d7dc5['healthScalers']['includes'](_0x21b428) ? Stats['petals'][_0x1d5049][_0xe818ed][_0x21b428] *= _0x3d7dc5['pvpOverride'][_0xe818ed][_0x21b428] : Stats['petals'][_0x1d5049][_0xe818ed][_0x21b428] = _0x3d7dc5['pvpOverride'][_0xe818ed][_0x21b428])))), _0xb068fa && (_0x3d7dc5['tsPetalOverride'] != undefined && (_0x3d7dc5['tsPetalOverride'][_0xe818ed] != undefined && (Object['keys'](_0x3d7dc5['tsPetalOverride'][_0xe818ed])['includes'](_0x21b428) && (_0x3d7dc5['damageScalers']['includes'](_0x21b428) || _0x3d7dc5['healthScalers']['includes'](_0x21b428) ? Stats['petals'][_0x1d5049][_0xe818ed][_0x21b428] *= _0x3d7dc5['tsPetalOverride'][_0xe818ed][_0x21b428] : Stats['petals'][_0x1d5049][_0xe818ed][_0x21b428] = _0x3d7dc5['tsPetalOverride'][_0xe818ed][_0x21b428]))));
                     }
                 } else {
-                    let _0x3f4cdb = BaseStats['rarities'][_0x2b18fc]['petalDamage'] / BaseStats['rarities'][_0x2b18fc - 0x1]['petalDamage'], _0x210dbf = BaseStats['rarities'][_0x2b18fc]['petalHealth'] / BaseStats['rarities'][_0x2b18fc - 0x1]['petalHealth'], _0x40052e = BaseStats['rarities'][_0x2b18fc]['petalHeal'] / BaseStats['rarities'][_0x2b18fc - 0x1]['petalHeal'], _0xdcc91c = BaseStats['rarities'][_0x2b18fc]['petalMass'] / BaseStats['rarities'][_0x2b18fc - 0x1]['petalMass'], _0x22ed39 = {};
-                    for (let _0x27e276 in Stats['petals'][_0x387122][_0x2b18fc - 0x1]) {
-                        let _0x487edd = ![];
-                        if (_0x3aebad['damageScalers']['includes'](_0x27e276))
-                            _0x487edd = !![], _0x22ed39[_0x27e276] = Math['round'](Stats['petals'][_0x387122][_0x2b18fc - 0x1][_0x27e276] * _0x3f4cdb * 0x64) / 0x64;
+                    let _0x521f3b = BaseStats['rarities'][_0xe818ed]['petalDamage'] / BaseStats['rarities'][_0xe818ed - 0x1]['petalDamage'], _0x3479f1 = BaseStats['rarities'][_0xe818ed]['petalHealth'] / BaseStats['rarities'][_0xe818ed - 0x1]['petalHealth'], _0x596f44 = BaseStats['rarities'][_0xe818ed]['petalHeal'] / BaseStats['rarities'][_0xe818ed - 0x1]['petalHeal'], _0x5c86c0 = BaseStats['rarities'][_0xe818ed]['petalMass'] / BaseStats['rarities'][_0xe818ed - 0x1]['petalMass'], _0x145a15 = {};
+                    for (let _0x27e1d3 in Stats['petals'][_0x1d5049][_0xe818ed - 0x1]) {
+                        let _0xc6f8c1 = ![];
+                        if (_0x3d7dc5['damageScalers']['includes'](_0x27e1d3))
+                            _0xc6f8c1 = !![], _0x145a15[_0x27e1d3] = Math['round'](Stats['petals'][_0x1d5049][_0xe818ed - 0x1][_0x27e1d3] * _0x521f3b * 0x64) / 0x64;
                         else {
-                            if (_0x3aebad['healthScalers']['includes'](_0x27e276))
-                                _0x487edd = !![], _0x22ed39[_0x27e276] = Math['round'](Stats['petals'][_0x387122][_0x2b18fc - 0x1][_0x27e276] * _0x210dbf * 0x64) / 0x64;
+                            if (_0x3d7dc5['healthScalers']['includes'](_0x27e1d3))
+                                _0xc6f8c1 = !![], _0x145a15[_0x27e1d3] = Math['round'](Stats['petals'][_0x1d5049][_0xe818ed - 0x1][_0x27e1d3] * _0x3479f1 * 0x64) / 0x64;
                             else {
-                                if (_0x3aebad['healScalers'])
-                                    _0x3aebad['healScalers']['includes'](_0x27e276) && (_0x487edd = !![], _0x22ed39[_0x27e276] = Math['round'](Stats['petals'][_0x387122][_0x2b18fc - 0x1][_0x27e276] * _0x40052e * 0x64) / 0x64);
+                                if (_0x3d7dc5['healScalers'])
+                                    _0x3d7dc5['healScalers']['includes'](_0x27e1d3) && (_0xc6f8c1 = !![], _0x145a15[_0x27e1d3] = Math['round'](Stats['petals'][_0x1d5049][_0xe818ed - 0x1][_0x27e1d3] * _0x596f44 * 0x64) / 0x64);
                                 else
-                                    _0x3aebad['massScalers'] && (_0x3aebad['massScalers']['includes'](_0x27e276) && (_0x487edd = !![], _0x22ed39[_0x27e276] = Math['round'](Stats['petals'][_0x387122][_0x2b18fc - 0x1][_0x27e276] * _0xdcc91c * 0x64) / 0x64));
+                                    _0x3d7dc5['massScalers'] && (_0x3d7dc5['massScalers']['includes'](_0x27e1d3) && (_0xc6f8c1 = !![], _0x145a15[_0x27e1d3] = Math['round'](Stats['petals'][_0x1d5049][_0xe818ed - 0x1][_0x27e1d3] * _0x5c86c0 * 0x64) / 0x64));
                             }
                         }
-                        if (_0x27e276 == 'poison')
-                            _0x22ed39['poison'] = [], _0x22ed39['poison'][0x0] = Math['round'](Stats['petals'][_0x387122][_0x2b18fc - 0x1]['poison'][0x0] * _0x3f4cdb * 0x64) / 0x64, _0x22ed39['poison'][0x1] = Math['round'](Stats['petals'][_0x387122][_0x2b18fc - 0x1]['poison'][0x1] * _0x3f4cdb * 0x64) / 0x64;
+                        if (_0x27e1d3 == 'poison')
+                            _0x145a15['poison'] = [], _0x145a15['poison'][0x0] = Math['round'](Stats['petals'][_0x1d5049][_0xe818ed - 0x1]['poison'][0x0] * _0x521f3b * 0x64) / 0x64, _0x145a15['poison'][0x1] = Math['round'](Stats['petals'][_0x1d5049][_0xe818ed - 0x1]['poison'][0x1] * _0x521f3b * 0x64) / 0x64;
                         else {
-                            if (_0x27e276 == 'summonBodyPoison')
-                                _0x22ed39['summonBodyPoison'] = [], _0x22ed39['summonBodyPoison'][0x0] = Math['round'](Stats['petals'][_0x387122][_0x2b18fc - 0x1]['summonBodyPoison'][0x0] * _0x3f4cdb * 0x64) / 0x64, _0x22ed39['summonBodyPoison'][0x1] = Math['round'](Stats['petals'][_0x387122][_0x2b18fc - 0x1]['summonBodyPoison'][0x1] * _0x3f4cdb * 0x64) / 0x64;
+                            if (_0x27e1d3 == 'summonBodyPoison')
+                                _0x145a15['summonBodyPoison'] = [], _0x145a15['summonBodyPoison'][0x0] = Math['round'](Stats['petals'][_0x1d5049][_0xe818ed - 0x1]['summonBodyPoison'][0x0] * _0x521f3b * 0x64) / 0x64, _0x145a15['summonBodyPoison'][0x1] = Math['round'](Stats['petals'][_0x1d5049][_0xe818ed - 0x1]['summonBodyPoison'][0x1] * _0x521f3b * 0x64) / 0x64;
                             else {
-                                if (_0x27e276 == 'flowerBodyPoison')
-                                    _0x22ed39['flowerBodyPoison'] = [], _0x22ed39['flowerBodyPoison'][0x0] = Math['round'](Stats['petals'][_0x387122][_0x2b18fc - 0x1]['flowerBodyPoison'][0x0] * _0x3f4cdb * 0x64) / 0x64, _0x22ed39['flowerBodyPoison'][0x1] = Math['round'](Stats['petals'][_0x387122][_0x2b18fc - 0x1]['flowerBodyPoison'][0x1] * _0x3f4cdb * 0x64) / 0x64;
+                                if (_0x27e1d3 == 'flowerBodyPoison')
+                                    _0x145a15['flowerBodyPoison'] = [], _0x145a15['flowerBodyPoison'][0x0] = Math['round'](Stats['petals'][_0x1d5049][_0xe818ed - 0x1]['flowerBodyPoison'][0x0] * _0x521f3b * 0x64) / 0x64, _0x145a15['flowerBodyPoison'][0x1] = Math['round'](Stats['petals'][_0x1d5049][_0xe818ed - 0x1]['flowerBodyPoison'][0x1] * _0x521f3b * 0x64) / 0x64;
                                 else
-                                    !_0x487edd && (_0x22ed39[_0x27e276] = Stats['petals'][_0x387122][_0x2b18fc - 0x1][_0x27e276]);
+                                    !_0xc6f8c1 && (_0x145a15[_0x27e1d3] = Stats['petals'][_0x1d5049][_0xe818ed - 0x1][_0x27e1d3]);
                             }
                         }
-                        if (_0x3580bf)
-                            _0x3aebad['pvpOverride'] != undefined ? _0x3aebad['pvpOverride'][_0x2b18fc] != undefined && (Object['keys'](_0x3aebad['pvpOverride'][_0x2b18fc])['includes'](_0x27e276) && (_0x3aebad['damageScalers']['includes'](_0x27e276) || _0x3aebad['healthScalers']['includes'](_0x27e276) || _0x3aebad['healScalers']?.['includes'](_0x27e276) || _0x3aebad['massScalers']?.['includes'](_0x27e276) ? _0x22ed39[_0x27e276] *= _0x3aebad['pvpOverride'][_0x2b18fc][_0x27e276] : _0x27e276 == 'poison' || _0x27e276 == 'summonBodyPoison' || _0x27e276 == 'flowerBodyPoison' ? (_0x22ed39[_0x27e276][0x0] *= _0x3aebad['pvpOverride'][_0x2b18fc][_0x27e276], _0x22ed39[_0x27e276][0x1] *= _0x3aebad['pvpOverride'][_0x2b18fc][_0x27e276]) : _0x22ed39[_0x27e276] = _0x3aebad['pvpOverride'][_0x2b18fc][_0x27e276])) : _0x3aebad['override'] != undefined && (_0x3aebad['override'][_0x2b18fc] != undefined && (Object['keys'](_0x3aebad['override'][_0x2b18fc])['includes'](_0x27e276) && (_0x3aebad['damageScalers']['includes'](_0x27e276) || _0x3aebad['healthScalers']['includes'](_0x27e276) || _0x3aebad['healScalers']?.['includes'](_0x27e276) || _0x3aebad['massScalers']?.['includes'](_0x27e276) ? _0x22ed39[_0x27e276] *= _0x3aebad['override'][_0x2b18fc][_0x27e276] : _0x27e276 == 'poison' || _0x27e276 == 'summonBodyPoison' || _0x27e276 == 'flowerBodyPoison' ? (_0x22ed39[_0x27e276][0x0] *= _0x3aebad['override'][_0x2b18fc][_0x27e276], _0x22ed39[_0x27e276][0x1] *= _0x3aebad['override'][_0x2b18fc][_0x27e276]) : _0x22ed39[_0x27e276] = _0x3aebad['override'][_0x2b18fc][_0x27e276])));
+                        if (_0xdba838)
+                            _0x3d7dc5['pvpOverride'] != undefined ? _0x3d7dc5['pvpOverride'][_0xe818ed] != undefined && (Object['keys'](_0x3d7dc5['pvpOverride'][_0xe818ed])['includes'](_0x27e1d3) && (_0x3d7dc5['damageScalers']['includes'](_0x27e1d3) || _0x3d7dc5['healthScalers']['includes'](_0x27e1d3) || _0x3d7dc5['healScalers']?.['includes'](_0x27e1d3) || _0x3d7dc5['massScalers']?.['includes'](_0x27e1d3) ? _0x145a15[_0x27e1d3] *= _0x3d7dc5['pvpOverride'][_0xe818ed][_0x27e1d3] : _0x27e1d3 == 'poison' || _0x27e1d3 == 'summonBodyPoison' || _0x27e1d3 == 'flowerBodyPoison' ? (_0x145a15[_0x27e1d3][0x0] *= _0x3d7dc5['pvpOverride'][_0xe818ed][_0x27e1d3], _0x145a15[_0x27e1d3][0x1] *= _0x3d7dc5['pvpOverride'][_0xe818ed][_0x27e1d3]) : _0x145a15[_0x27e1d3] = _0x3d7dc5['pvpOverride'][_0xe818ed][_0x27e1d3])) : _0x3d7dc5['override'] != undefined && (_0x3d7dc5['override'][_0xe818ed] != undefined && (Object['keys'](_0x3d7dc5['override'][_0xe818ed])['includes'](_0x27e1d3) && (_0x3d7dc5['damageScalers']['includes'](_0x27e1d3) || _0x3d7dc5['healthScalers']['includes'](_0x27e1d3) || _0x3d7dc5['healScalers']?.['includes'](_0x27e1d3) || _0x3d7dc5['massScalers']?.['includes'](_0x27e1d3) ? _0x145a15[_0x27e1d3] *= _0x3d7dc5['override'][_0xe818ed][_0x27e1d3] : _0x27e1d3 == 'poison' || _0x27e1d3 == 'summonBodyPoison' || _0x27e1d3 == 'flowerBodyPoison' ? (_0x145a15[_0x27e1d3][0x0] *= _0x3d7dc5['override'][_0xe818ed][_0x27e1d3], _0x145a15[_0x27e1d3][0x1] *= _0x3d7dc5['override'][_0xe818ed][_0x27e1d3]) : _0x145a15[_0x27e1d3] = _0x3d7dc5['override'][_0xe818ed][_0x27e1d3])));
                         else {
-                            if (_0x2dd646) {
-                                let _0x3ab21e = ![];
-                                _0x3aebad['tsPetalOverride'] != undefined ? _0x3aebad['tsPetalOverride'][_0x2b18fc] != undefined ? Object['keys'](_0x3aebad['tsPetalOverride'][_0x2b18fc])['includes'](_0x27e276) && (_0x3aebad['damageScalers']['includes'](_0x27e276) || _0x3aebad['healthScalers']['includes'](_0x27e276) || _0x3aebad['healScalers']?.['includes'](_0x27e276) || _0x3aebad['massScalers']?.['includes'](_0x27e276) ? _0x22ed39[_0x27e276] *= _0x3aebad['tsPetalOverride'][_0x2b18fc][_0x27e276] : _0x27e276 == 'poison' || _0x27e276 == 'summonBodyPoison' || _0x27e276 == 'flowerBodyPoison' ? (_0x22ed39[_0x27e276][0x0] *= _0x3aebad['tsPetalOverride'][_0x2b18fc][_0x27e276], _0x22ed39[_0x27e276][0x1] *= _0x3aebad['tsPetalOverride'][_0x2b18fc][_0x27e276]) : _0x22ed39[_0x27e276] = _0x3aebad['tsPetalOverride'][_0x2b18fc][_0x27e276]) : _0x3ab21e = !![] : _0x3ab21e = !![];
-                                if (_0x3ab21e == !![])
-                                    _0x3aebad['override'] != undefined && (_0x3aebad['override'][_0x2b18fc] != undefined && (Object['keys'](_0x3aebad['override'][_0x2b18fc])['includes'](_0x27e276) && (_0x3aebad['damageScalers']['includes'](_0x27e276) || _0x3aebad['healthScalers']['includes'](_0x27e276) || _0x3aebad['healScalers']?.['includes'](_0x27e276) || _0x3aebad['massScalers']?.['includes'](_0x27e276) ? _0x22ed39[_0x27e276] *= _0x3aebad['override'][_0x2b18fc][_0x27e276] : _0x27e276 == 'poison' || _0x27e276 == 'summonBodyPoison' || _0x27e276 == 'flowerBodyPoison' ? (_0x22ed39[_0x27e276][0x0] *= _0x3aebad['override'][_0x2b18fc][_0x27e276], _0x22ed39[_0x27e276][0x1] *= _0x3aebad['override'][_0x2b18fc][_0x27e276]) : _0x22ed39[_0x27e276] = _0x3aebad['override'][_0x2b18fc][_0x27e276])));
+                            if (_0xb068fa) {
+                                let _0x1fba0a = ![];
+                                _0x3d7dc5['tsPetalOverride'] != undefined ? _0x3d7dc5['tsPetalOverride'][_0xe818ed] != undefined ? Object['keys'](_0x3d7dc5['tsPetalOverride'][_0xe818ed])['includes'](_0x27e1d3) && (_0x3d7dc5['damageScalers']['includes'](_0x27e1d3) || _0x3d7dc5['healthScalers']['includes'](_0x27e1d3) || _0x3d7dc5['healScalers']?.['includes'](_0x27e1d3) || _0x3d7dc5['massScalers']?.['includes'](_0x27e1d3) ? _0x145a15[_0x27e1d3] *= _0x3d7dc5['tsPetalOverride'][_0xe818ed][_0x27e1d3] : _0x27e1d3 == 'poison' || _0x27e1d3 == 'summonBodyPoison' || _0x27e1d3 == 'flowerBodyPoison' ? (_0x145a15[_0x27e1d3][0x0] *= _0x3d7dc5['tsPetalOverride'][_0xe818ed][_0x27e1d3], _0x145a15[_0x27e1d3][0x1] *= _0x3d7dc5['tsPetalOverride'][_0xe818ed][_0x27e1d3]) : _0x145a15[_0x27e1d3] = _0x3d7dc5['tsPetalOverride'][_0xe818ed][_0x27e1d3]) : _0x1fba0a = !![] : _0x1fba0a = !![];
+                                if (_0x1fba0a == !![])
+                                    _0x3d7dc5['override'] != undefined && (_0x3d7dc5['override'][_0xe818ed] != undefined && (Object['keys'](_0x3d7dc5['override'][_0xe818ed])['includes'](_0x27e1d3) && (_0x3d7dc5['damageScalers']['includes'](_0x27e1d3) || _0x3d7dc5['healthScalers']['includes'](_0x27e1d3) || _0x3d7dc5['healScalers']?.['includes'](_0x27e1d3) || _0x3d7dc5['massScalers']?.['includes'](_0x27e1d3) ? _0x145a15[_0x27e1d3] *= _0x3d7dc5['override'][_0xe818ed][_0x27e1d3] : _0x27e1d3 == 'poison' || _0x27e1d3 == 'summonBodyPoison' || _0x27e1d3 == 'flowerBodyPoison' ? (_0x145a15[_0x27e1d3][0x0] *= _0x3d7dc5['override'][_0xe818ed][_0x27e1d3], _0x145a15[_0x27e1d3][0x1] *= _0x3d7dc5['override'][_0xe818ed][_0x27e1d3]) : _0x145a15[_0x27e1d3] = _0x3d7dc5['override'][_0xe818ed][_0x27e1d3])));
                             } else
-                                _0x3aebad['override'] != undefined && (_0x3aebad['override'][_0x2b18fc] != undefined && (Object['keys'](_0x3aebad['override'][_0x2b18fc])['includes'](_0x27e276) && (_0x3aebad['damageScalers']['includes'](_0x27e276) || _0x3aebad['healthScalers']['includes'](_0x27e276) || _0x3aebad['healScalers']?.['includes'](_0x27e276) || _0x3aebad['massScalers']?.['includes'](_0x27e276) ? _0x22ed39[_0x27e276] *= _0x3aebad['override'][_0x2b18fc][_0x27e276] : _0x27e276 == 'poison' || _0x27e276 == 'summonBodyPoison' || _0x27e276 == 'flowerBodyPoison' ? (_0x22ed39[_0x27e276][0x0] *= _0x3aebad['override'][_0x2b18fc][_0x27e276], _0x22ed39[_0x27e276][0x1] *= _0x3aebad['override'][_0x2b18fc][_0x27e276]) : _0x22ed39[_0x27e276] = _0x3aebad['override'][_0x2b18fc][_0x27e276])));
+                                _0x3d7dc5['override'] != undefined && (_0x3d7dc5['override'][_0xe818ed] != undefined && (Object['keys'](_0x3d7dc5['override'][_0xe818ed])['includes'](_0x27e1d3) && (_0x3d7dc5['damageScalers']['includes'](_0x27e1d3) || _0x3d7dc5['healthScalers']['includes'](_0x27e1d3) || _0x3d7dc5['healScalers']?.['includes'](_0x27e1d3) || _0x3d7dc5['massScalers']?.['includes'](_0x27e1d3) ? _0x145a15[_0x27e1d3] *= _0x3d7dc5['override'][_0xe818ed][_0x27e1d3] : _0x27e1d3 == 'poison' || _0x27e1d3 == 'summonBodyPoison' || _0x27e1d3 == 'flowerBodyPoison' ? (_0x145a15[_0x27e1d3][0x0] *= _0x3d7dc5['override'][_0xe818ed][_0x27e1d3], _0x145a15[_0x27e1d3][0x1] *= _0x3d7dc5['override'][_0xe818ed][_0x27e1d3]) : _0x145a15[_0x27e1d3] = _0x3d7dc5['override'][_0xe818ed][_0x27e1d3])));
                         }
                     }
-                    Stats['petals'][_0x387122][_0x2b18fc] = _0x22ed39;
+                    Stats['petals'][_0x1d5049][_0xe818ed] = _0x145a15;
                 }
             }
         }
-        if (BaseStats['petals'][_0x387122]['slowdown']) {
-            let _0x2f20b7 = structuredClone(BaseStats['petals'][_0x387122]['slowdown']), _0x25d0cc = getSlowdown(_0x2f20b7);
-            for (let _0x4b5f8a in Stats['petals'][_0x387122]) {
-                _0x3580bf ? Stats['petals'][_0x387122][_0x4b5f8a]['slowdown'] = _0x25d0cc[0x1] : Stats['petals'][_0x387122][_0x4b5f8a]['slowdown'] = _0x25d0cc[_0x4b5f8a];
+        if (BaseStats['petals'][_0x1d5049]['slowdown']) {
+            let _0x1f98f0 = structuredClone(BaseStats['petals'][_0x1d5049]['slowdown']), _0x345e63 = getSlowdown(_0x1f98f0);
+            for (let _0x5b20ba in Stats['petals'][_0x1d5049]) {
+                _0xdba838 ? Stats['petals'][_0x1d5049][_0x5b20ba]['slowdown'] = _0x345e63[0x1] : Stats['petals'][_0x1d5049][_0x5b20ba]['slowdown'] = _0x345e63[_0x5b20ba];
             }
         }
     }
@@ -22258,8 +22304,8 @@ const alphabet = 'abcdefghijklmnopqrstuvwxyz'['split'](''), alphabetUpper = 'abc
 for (let i = 0x0; i < chars['length']; i++) {
     letterToNumber[chars[i]] = i;
 }
-function stringToNumberArray(_0xac7f63) {
-    return _0xac7f63['split']('')['map'](_0x3fc1a0 => letterToNumber[_0x3fc1a0]);
+function stringToNumberArray(_0x494b4c) {
+    return _0x494b4c['split']('')['map'](_0x1aa127 => letterToNumber[_0x1aa127]);
 }
 const oldStats = Stats, oldRarityStats = Stats['rarities'];
 Stats['rarities'] = [Stats['rarities'][0x0]];
@@ -22278,11 +22324,11 @@ BaseStats['rarities'] = Stats['rarities'], calculateStats(!![]), pvpStats = stru
     'petals': {},
     'enemies': {},
     'rarities': {}
-}, Stats['rarities'] = BaseStats['rarities'] = oldRarityStats, Stats['specialRarityDrops'] = BaseStats['specialRarityDrops'], calculateStats(![]), Stats['levelPerXp'] = _0x5d947b => {
-    return 11.18213 * Math['log'](0.000480827337943866 * (0x820 + _0x5d947b));
-}, Stats['hpPerLevel'] = _0x38c859 => {
-    let _0x39743d = Math['floor'](_0x38c859);
-    return (_0x39743d ** 0x3 / 0xe10 + _0x39743d ** 0x2 / 0x19 + 0x4 * _0x39743d) ** 1.71 / 0xa + 0x3e8;
+}, Stats['rarities'] = BaseStats['rarities'] = oldRarityStats, Stats['specialRarityDrops'] = BaseStats['specialRarityDrops'], calculateStats(![]), Stats['levelPerXp'] = _0x57bec4 => {
+    return 11.18213 * Math['log'](0.000480827337943866 * (0x820 + _0x57bec4));
+}, Stats['hpPerLevel'] = _0x1ff59e => {
+    let _0x2949cb = Math['floor'](_0x1ff59e);
+    return (_0x2949cb ** 0x3 / 0xe10 + _0x2949cb ** 0x2 / 0x19 + 0x4 * _0x2949cb) ** 1.71 / 0xa + 0x3e8;
 }, Stats['basePetalSlots'] = 0x5, Stats['petalSlotThresholds'] = [
     0xf,
     0x1e,
@@ -22290,58 +22336,58 @@ BaseStats['rarities'] = Stats['rarities'], calculateStats(!![]), pvpStats = stru
     0x3c,
     0x4b,
     0x3e8
-], Stats['validTypeAndRarity'] = _0x29479c => {
-    if (typeof _0x29479c != 'object')
+], Stats['validTypeAndRarity'] = _0x4d8040 => {
+    if (typeof _0x4d8040 != 'object')
         return ![];
-    if (_0x29479c == null)
+    if (_0x4d8040 == null)
         return ![];
-    if (Object['keys'](_0x29479c)['length'] !== 0x2)
+    if (Object['keys'](_0x4d8040)['length'] !== 0x2)
         return ![];
-    if (typeof _0x29479c['type'] != 'string')
+    if (typeof _0x4d8040['type'] != 'string')
         return ![];
-    if (typeof _0x29479c['rarity'] != 'number')
+    if (typeof _0x4d8040['rarity'] != 'number')
         return ![];
-    if (Stats['petals'][_0x29479c['type']] === undefined)
+    if (Stats['petals'][_0x4d8040['type']] === undefined)
         return ![];
-    if (Stats['petals'][_0x29479c['type']][_0x29479c['rarity']] === undefined)
-        return ![];
-    return !![];
-}, Stats['validEnemyTypeAndRarity'] = _0x396c04 => {
-    if (_0x396c04['toString'] === undefined)
-        return ![];
-    if (Object['keys'](_0x396c04)['length'] !== 0x2)
-        return ![];
-    if (Stats['enemies'][_0x396c04['type']] === undefined)
-        return ![];
-    if (Stats['enemies'][_0x396c04['type']][_0x396c04['rarity']] === undefined)
+    if (Stats['petals'][_0x4d8040['type']][_0x4d8040['rarity']] === undefined)
         return ![];
     return !![];
-}, Stats['getPetalCustomBiome'] = globalThis['getPetalCustomBiome'] = _0x3cc8ab => {
-    if (_0x3cc8ab === 'Basic')
+}, Stats['validEnemyTypeAndRarity'] = _0x47423a => {
+    if (_0x47423a['toString'] === undefined)
+        return ![];
+    if (Object['keys'](_0x47423a)['length'] !== 0x2)
+        return ![];
+    if (Stats['enemies'][_0x47423a['type']] === undefined)
+        return ![];
+    if (Stats['enemies'][_0x47423a['type']][_0x47423a['rarity']] === undefined)
+        return ![];
+    return !![];
+}, Stats['getPetalCustomBiome'] = globalThis['getPetalCustomBiome'] = _0x3c36ed => {
+    if (_0x3c36ed === 'Basic')
         return undefined;
-    return BaseStats['petals'][_0x3cc8ab]?.['customBiome'];
+    return BaseStats['petals'][_0x3c36ed]?.['customBiome'];
 };
-function deepFreeze(_0x270634) {
-    return Object['freeze'](_0x270634), Object['getOwnPropertyNames'](_0x270634)['forEach'](_0x1897eb => {
-        const _0x345125 = _0x270634[_0x1897eb];
-        _0x345125 !== null && (typeof _0x345125 === 'object' || typeof _0x345125 === 'function') && !Object['isFrozen'](_0x345125) && deepFreeze(_0x345125);
-    }), _0x270634;
+function deepFreeze(_0x2e1fd8) {
+    return Object['freeze'](_0x2e1fd8), Object['getOwnPropertyNames'](_0x2e1fd8)['forEach'](_0x918b66 => {
+        const _0x249aad = _0x2e1fd8[_0x918b66];
+        _0x249aad !== null && (typeof _0x249aad === 'object' || typeof _0x249aad === 'function') && !Object['isFrozen'](_0x249aad) && deepFreeze(_0x249aad);
+    }), _0x2e1fd8;
 }
-function deepWatch(_0x297459, _0x2162bc, _0x47728a = '') {
-    return new Proxy(_0x297459, {
-        'get'(_0x4dabf4, _0x3557b8) {
-            const _0x5b11fb = _0x4dabf4[_0x3557b8];
-            if (typeof _0x5b11fb === 'object' && _0x5b11fb !== null)
-                return deepWatch(_0x5b11fb, _0x2162bc, _0x47728a + ('.' + _0x3557b8));
-            return _0x5b11fb;
+function deepWatch(_0x384e93, _0xc2819e, _0x3d107a = '') {
+    return new Proxy(_0x384e93, {
+        'get'(_0x3d0912, _0xcf162a) {
+            const _0x16e69f = _0x3d0912[_0xcf162a];
+            if (typeof _0x16e69f === 'object' && _0x16e69f !== null)
+                return deepWatch(_0x16e69f, _0xc2819e, _0x3d107a + ('.' + _0xcf162a));
+            return _0x16e69f;
         },
-        'set'(_0xac20d3, _0x4b78b6, _0x347c1a) {
-            return console['log']('Property\x20\x22' + _0x47728a + '.' + _0x4b78b6 + '\x22\x20changed\x20from', _0xac20d3[_0x4b78b6], 'to', _0x347c1a), _0x2162bc(_0x4b78b6, _0xac20d3[_0x4b78b6], _0x347c1a), _0xac20d3[_0x4b78b6] = _0x347c1a, !![];
+        'set'(_0x9cf029, _0x18a8c5, _0xb6fc1c) {
+            return console['log']('Property\x20\x22' + _0x3d107a + '.' + _0x18a8c5 + '\x22\x20changed\x20from', _0x9cf029[_0x18a8c5], 'to', _0xb6fc1c), _0xc2819e(_0x18a8c5, _0x9cf029[_0x18a8c5], _0xb6fc1c), _0x9cf029[_0x18a8c5] = _0xb6fc1c, !![];
         }
     });
 }
 if (typeof window === 'undefined') {
-    let callback = (_0x25d2d4, _0x51a9b1, _0xa319d3) => {
+    let callback = (_0x2d405f, _0xf19ba5, _0x3ef753) => {
     };
     module['exports'] = {
         'Stats': Stats,
