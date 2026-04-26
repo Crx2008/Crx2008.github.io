@@ -1,0 +1,248 @@
+/**
+ * PixiRenderer.js - 迁移协调器，feature flags 控制各层开关
+ * 
+ * 职责：
+ * - 管理各渲染层的开关（background, grid, enemies, flowers, ui）
+ * - 提供统一的渲染控制接口
+ * - 协调 Canvas 2D 和 PixiJS 的切换
+ */
+
+class PixiRenderer {
+    constructor() {
+        // 总开关
+        this.enabled = false;
+
+        // 各层开关（默认全部关闭，逐步开启）
+        this.layers = {
+            background: false,  // 背景 + 网格 + 世界边界
+            grid: false,        // 网格（独立控制）
+            worldBorder: false, // 世界边界（独立控制）
+            enemies: true,      // 敌人（Phase 2 已启用 ✅）
+            flowers: false,     // 花朵 + 花瓣 + 投射物
+            ui: false           // HUD 元素
+        };
+
+        // 调试模式
+        this.debug = false;
+
+        // 渲染层实例
+        this.backgroundLayer = null;
+        this.gridLayer = null;
+        this.worldBorderLayer = null;
+        this.enemyLayer = null;
+        this.cameraController = null;
+    }
+
+    /**
+     * 初始化渲染层（在 PixiApp 初始化后调用）
+     */
+    initLayers() {
+        if (!window.pixiApp || !window.pixiApp.initialized) {
+            console.warn('[PixiRenderer] Cannot init layers: PixiApp not initialized');
+            return;
+        }
+
+        const app = window.pixiApp;
+        const zoom = window.canvas?.zoom || 1;
+
+        this.backgroundLayer = new BackgroundLayer(app.app);
+        this.backgroundLayer.setZoom(zoom);
+
+        this.gridLayer = new GridLayer(app.app);
+        this.gridLayer.setZoom(zoom);
+
+        this.worldBorderLayer = new WorldBorderLayer(app.app);
+        this.worldBorderLayer.setZoom(zoom);
+
+        this.cameraController = new CameraController(app.worldContainer);
+
+
+        // Phase 2: 敌人层
+        this.enemyLayer = new EnemyLayer(app);
+        // EnemyLayer.enabled 由 this.layers.enemies 控制
+        
+        console.log('[PixiRenderer] Layers initialized');
+    }
+
+    /**
+     * 窗口 resize 时更新所有层的 scale
+     */
+    resize(zoom) {
+        if (!this.enabled) return;
+
+        if (this.backgroundLayer) this.backgroundLayer.setZoom(zoom);
+        if (this.gridLayer) this.gridLayer.setZoom(zoom);
+        if (this.worldBorderLayer) this.worldBorderLayer.setZoom(zoom);
+
+        console.log('[PixiRenderer] Resized, zoom:', zoom);
+    }
+
+    /**
+     * 更新所有层（每帧调用）
+     */
+    updateLayers() {
+        if (!this.enabled || !window.pixiApp?.initialized) return;
+
+        const canvas = window.canvas;
+        const room = window.room;
+        if (!canvas || !room) return;
+
+        const logicalWidth = canvas.w;
+        const logicalHeight = canvas.h;
+
+        // ✅ 相机控制器总是更新（不依赖玩家是否存在）
+        if (this.cameraController) {
+            this.cameraController.update(logicalWidth, logicalHeight);
+        }
+
+        // ✅ 背景层总是更新（不依赖玩家是否存在）
+        if (this.layers.background && this.backgroundLayer) {
+            this.backgroundLayer.update(room.biome, logicalWidth, logicalHeight);
+        }
+
+        // ❌ 玩家检查：以下层依赖玩家存在
+        const me = room.flowers?.[window.selfId];
+        if (!me?.render) return;
+
+        const cameraX = me.render.headX;
+        const cameraY = me.render.headY;
+        const fov = window.renderFov || 1;
+
+        if (this.layers.grid && this.gridLayer) {
+            this.gridLayer.update(room.biome, logicalWidth, logicalHeight, cameraX, cameraY, fov);
+        }
+
+        if (this.layers.worldBorder && this.worldBorderLayer) {
+            this.worldBorderLayer.update(room.radius, fov, logicalWidth, logicalHeight, cameraX, cameraY);
+        }
+
+        
+        // Phase 2: 敌人层
+        if (this.layers.enemies && this.enemyLayer && window.room && window.room.enemies) {
+            this.enemyLayer.update(window.room.enemies);
+        }
+    }
+
+    /**
+     * 启用 PixiJS 渲染
+     */
+    enable() {
+        this.enabled = true;
+        console.log('[PixiRenderer] Enabled');
+    }
+
+    /**
+     * 禁用 PixiJS 渲染（回退到 Canvas 2D）
+     */
+    disable() {
+        this.enabled = false;
+        console.log('[PixiRenderer] Disabled');
+    }
+
+    /**
+     * 判断某层是否应该用 PixiJS 渲染
+     * @param {string} layerName - 层名称
+     * @returns {boolean}
+     */
+    shouldRenderLayer(layerName) {
+        const result = this.enabled && this.layers[layerName];
+        
+        if (this.debug) {
+            console.log(`[PixiRenderer] shouldRenderLayer(${layerName}):`, result);
+        }
+        
+        return result;
+    }
+
+    /**
+     * 开启某层
+     * @param {string} layerName - 层名称
+     */
+    enableLayer(layerName) {
+        if (this.layers.hasOwnProperty(layerName)) {
+            this.layers[layerName] = true;
+            console.log(`[PixiRenderer] Layer "${layerName}" enabled`);
+        } else {
+            console.warn(`[PixiRenderer] Unknown layer: ${layerName}`);
+        }
+    }
+
+    /**
+     * 关闭某层
+     * @param {string} layerName - 层名称
+     */
+    disableLayer(layerName) {
+        if (this.layers.hasOwnProperty(layerName)) {
+            this.layers[layerName] = false;
+            console.log(`[PixiRenderer] Layer "${layerName}" disabled`);
+        } else {
+            console.warn(`[PixiRenderer] Unknown layer: ${layerName}`);
+        }
+    }
+
+    /**
+     * 开启所有层
+     */
+    enableAllLayers() {
+        for (let layerName in this.layers) {
+            this.layers[layerName] = true;
+        }
+        console.log('[PixiRenderer] All layers enabled');
+    }
+
+    /**
+     * 关闭所有层
+     */
+    disableAllLayers() {
+        for (let layerName in this.layers) {
+            this.layers[layerName] = false;
+        }
+        console.log('[PixiRenderer] All layers disabled');
+    }
+
+    /**
+     * 获取当前状态
+     * @returns {object}
+     */
+    getStatus() {
+        return {
+            enabled: this.enabled,
+            layers: { ...this.layers }
+        };
+    }
+
+    /**
+     * 设置调试模式
+     * @param {boolean} enabled
+     */
+    setDebug(enabled) {
+        this.debug = enabled;
+        console.log(`[PixiRenderer] Debug mode: ${enabled ? 'ON' : 'OFF'}`);
+    }
+}
+
+// 全局单例
+window.pixiRenderer = new PixiRenderer();
+
+// 开发环境下，暴露到全局方便调试
+if (typeof window !== 'undefined') {
+    window.debugPixi = {
+        enable: () => window.pixiRenderer.enable(),
+        disable: () => window.pixiRenderer.disable(),
+        enableLayer: (name) => window.pixiRenderer.enableLayer(name),
+        disableLayer: (name) => window.pixiRenderer.disableLayer(name),
+        enableAll: () => {
+            window.pixiRenderer.enable();
+            window.pixiRenderer.enableAllLayers();
+        },
+        disableAll: () => {
+            window.pixiRenderer.disableAllLayers();
+            window.pixiRenderer.disable();
+        },
+        status: () => window.pixiRenderer.getStatus(),
+        debug: (enabled = true) => window.pixiRenderer.setDebug(enabled)
+    };
+    
+    console.log('[PixiRenderer] Debug helpers available: window.debugPixi');
+    console.log('[PixiRenderer] Usage: debugPixi.enableLayer("background")');
+}
