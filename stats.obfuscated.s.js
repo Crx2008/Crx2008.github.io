@@ -12341,27 +12341,27 @@ const attackPetalDistanceMult = 1.91, defendPetalDistanceMult = 0.6, petal_damag
                     },
                     0xa: {
                         'waveSpeedBoost': 7.4,
-                        'ratedWave': 0x1ee,
+                        'ratedWave': 0x1bc,
                         'speedReduction': 0.05
                     },
                     0xb: {
                         'waveSpeedBoost': 0x9,
-                        'ratedWave': 0x24e,
+                        'ratedWave': 0x1e0,
                         'speedReduction': 0.06
                     },
                     0xc: {
                         'waveSpeedBoost': 10.8,
-                        'ratedWave': 0x26c,
+                        'ratedWave': 0x208,
                         'speedReduction': 0.03
                     },
                     0xd: {
                         'waveSpeedBoost': 0xe,
-                        'ratedWave': 0x26c,
+                        'ratedWave': 0x226,
                         'speedReduction': 0.02
                     },
                     0xe: {
                         'waveSpeedBoost': 0x12,
-                        'ratedWave': 0x26c,
+                        'ratedWave': 0x258,
                         'speedReduction': 0.028
                     },
                     0xf: {
