@@ -12294,86 +12294,22 @@ const attackPetalDistanceMult = 1.91, defendPetalDistanceMult = 0.6, petal_damag
                 'ratedWave': 0x86,
                 'speedReduction': 0.02,
                 'override': {
-                    0x1: {
-                        'waveSpeedBoost': 1.4,
-                        'ratedWave': 0x86,
-                        'speedReduction': 0.02
-                    },
-                    0x2: {
-                        'waveSpeedBoost': 1.56,
-                        'ratedWave': 0x90,
-                        'speedReduction': 0.02
-                    },
-                    0x3: {
-                        'waveSpeedBoost': 1.8,
-                        'ratedWave': 0x9e,
-                        'speedReduction': 0.02
-                    },
-                    0x4: {
-                        'waveSpeedBoost': 2.12,
-                        'ratedWave': 0xb1,
-                        'speedReduction': 0.02
-                    },
-                    0x5: {
-                        'waveSpeedBoost': 2.76,
-                        'ratedWave': 0xd8,
-                        'speedReduction': 0.02
-                    },
-                    0x6: {
-                        'waveSpeedBoost': 3.5,
-                        'ratedWave': 0x104,
-                        'speedReduction': 0.03
-                    },
-                    0x7: {
-                        'waveSpeedBoost': 4.3,
-                        'ratedWave': 0x134,
-                        'speedReduction': 0.04
-                    },
-                    0x8: {
-                        'waveSpeedBoost': 4.8,
-                        'ratedWave': 0x152,
-                        'speedReduction': 0.04
-                    },
-                    0x9: {
-                        'waveSpeedBoost': 5.8,
-                        'ratedWave': 0x18e,
-                        'speedReduction': 0.04
-                    },
-                    0xa: {
-                        'waveSpeedBoost': 7.4,
-                        'ratedWave': 0x1bc,
-                        'speedReduction': 0.05
-                    },
-                    0xb: {
-                        'waveSpeedBoost': 0x9,
-                        'ratedWave': 0x1e0,
-                        'speedReduction': 0.06
-                    },
-                    0xc: {
-                        'waveSpeedBoost': 10.8,
-                        'ratedWave': 0x208,
-                        'speedReduction': 0.03
-                    },
-                    0xd: {
-                        'waveSpeedBoost': 0xe,
-                        'ratedWave': 0x226,
-                        'speedReduction': 0.02
-                    },
-                    0xe: {
-                        'waveSpeedBoost': 0x12,
-                        'ratedWave': 0x258,
-                        'speedReduction': 0.028
-                    },
-                    0xf: {
-                        'waveSpeedBoost': 22.6,
-                        'ratedWave': 0x28a,
-                        'speedReduction': 0.03
-                    },
-                    0x10: {
-                        'waveSpeedBoost': 28.2,
-                        'ratedWave': 0x28a,
-                        'speedReduction': 0.04
-                    }
+        1: { waveSpeedBoost: 1.4, ratedWave: 134, speedReduction: 0.02 },
+        2: { waveSpeedBoost: 1.56, ratedWave: 144, speedReduction: 0.02 },
+        3: { waveSpeedBoost: 1.8, ratedWave: 158, speedReduction: 0.02 },
+        4: { waveSpeedBoost: 2.12, ratedWave: 177, speedReduction: 0.02 },
+        5: { waveSpeedBoost: 2.76, ratedWave: 216, speedReduction: 0.02 },
+        6: { waveSpeedBoost: 3.5, ratedWave: 260, speedReduction: 0.03 },
+        7: { waveSpeedBoost: 4.3, ratedWave: 308, speedReduction: 0.04 },
+        8: { waveSpeedBoost: 4.8, ratedWave: 338, speedReduction: 0.04 },
+        9: { waveSpeedBoost: 5.8, ratedWave: 398, speedReduction: 0.04 },
+        10: { waveSpeedBoost: 7.4, ratedWave: 444, speedReduction: 0.05 },
+        11: { waveSpeedBoost: 9, ratedWave: 480, speedReduction: 0.06 },
+        12: { waveSpeedBoost: 10.8, ratedWave: 520, speedReduction: 0.03 },
+        13: { waveSpeedBoost: 14, ratedWave: 550, speedReduction: 0.02 },
+        14: { waveSpeedBoost: 18, ratedWave: 600, speedReduction: 0.028 },
+        15: { waveSpeedBoost: 22.6, ratedWave: 650, speedReduction: 0.03 },
+        16: { waveSpeedBoost: 28.2, ratedWave: 650, speedReduction: 0.04 },
                 },
                 'petalLayout': [[{}]],
                 'damageScalers': ['damage'],
