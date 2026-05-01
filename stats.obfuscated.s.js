@@ -611,8 +611,8 @@ const attackPetalDistanceMult = 1.91, defendPetalDistanceMult = 0.6, petal_damag
                 'healthScalers': ['health']
             },
             'Bone': {
-                'damage': 34.15,
-                'health': 20.25,
+                'damage': 30.15,
+                'health': 10.25,
                 'armor': 0x15,
                 'radius': 14.5,
                 'reload': 2.7,
