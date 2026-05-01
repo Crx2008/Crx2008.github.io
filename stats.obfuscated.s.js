@@ -2754,8 +2754,8 @@ const attackPetalDistanceMult = 1.91, defendPetalDistanceMult = 0.6, petal_damag
                 'health': 0.01,
                 'reload': 0.7,
                 'summonBodyPoison': [
-                    0x16,
-                    0xb
+                    32,
+                    16
                 ],
                 'radius': 0xc,
                 'petalLayout': [[{}]],
@@ -6345,95 +6345,42 @@ const attackPetalDistanceMult = 1.91, defendPetalDistanceMult = 0.6, petal_damag
                 'damageScalers': ['hitBlastDamage'],
                 'healthScalers': ['health']
             },
-            'Fig': {
-                'damage': 0x28,
-                'blastRadius': 0xb4,
-                'health': 0.1,
-                'reload': 0.8,
-                'radius': 0x10,
-                'attackDistanceMult': 1.25,
-                'tsPetalOverride': {
-                    0x0: {
-                        'damage': 0.9,
-                        'radius': 1.5
-                    }
-                },
-                'tanksmithShootCooldown': 0x14,
-                'override': {
-                    0x4: {
-                        'blastRadius': 0xdc,
-                        'radius': 0xa
-                    },
-                    0x5: {
-                        'blastRadius': 0x104,
-                        'radius': 0xc
-                    },
-                    0x6: {
-                        'blastRadius': 0x12c,
-                        'radius': 0xe
-                    },
-                    0x7: {
-                        'blastRadius': 0x154,
-                        'radius': 0x10
-                    },
-                    0x8: {
-                        'blastRadius': 0x17c,
-                        'radius': 0x12
-                    },
-                    0x9: {
-                        'blastRadius': 0x1a4,
-                        'radius': 0x14
-                    },
-                    0xa: {
-                        'blastRadius': 0x1e0,
-                        'radius': 0x16,
-                        'damage': 0.96
-                    },
-                    0xb: {
-                        'blastRadius': 0x21c,
-                        'radius': 0x18,
-                        'damage': 0.93
-                    },
-                    0xc: {
-                        'blastRadius': 0x258,
-                        'radius': 0x1a,
-                        'damage': 0.93
-                    },
-                    0xd: {
-                        'blastRadius': 0x294,
-                        'radius': 0x20,
-                        'damage': 0.93
-                    },
-                    0xe: {
-                        'blastRadius': 0x2d0,
-                        'radius': 0x26,
-                        'damage': 0.92 * 0.86
-                    },
-                    0xf: {
-                        'blastRadius': 0x2e4,
-                        'radius': 0x2c,
-                        'damage': 0.95
-                    },
-                    0x10: {
-                        'blastRadius': 0x2f8,
-                        'radius': 0x32,
-                        'damage': 0.95
-                    },
-                    0x11: {
-                        'blastRadius': 0x30c,
-                        'radius': 0x38,
-                        'damage': 0.95
-                    },
-                    0x12: {
-                        'blastRadius': 0x320,
-                        'radius': 0x3e,
-                        'damage': 0.95
-                    }
-                },
-                'petalLayout': [[{}]],
-                'damageScalers': ['damage'],
-                'healthScalers': ['health']
-            },
+    "Fig": {
+      damage: 40,
+      blastRadius: 180+30,
+      health: 0.1,
+      reload: 0.8,
+      radius: 16,
+      attackDistanceMult: 1.25,
+      tsPetalOverride: {
+        0: {
+          damage: 0.9,
+          radius: 1.5
+        },
+      },
+      tanksmithShootCooldown: 20,
+      override: {
+        4: {blastRadius: 220+30, radius: 10},
+        5: {blastRadius: 260+30, radius: 12},
+        6: {blastRadius: 300+30, radius: 14},
+        7: {blastRadius: 340+30, radius: 16},
+        8: {blastRadius: 380+30, radius: 18},
+        9: {blastRadius: 420+30, radius: 20},
+        10: {blastRadius: 480+30, radius: 22, damage: 0.96},
+        11: {blastRadius: 540+30, radius: 24, damage: 0.93},
+        12: {blastRadius: 600+30, radius: 26, damage: 0.93},
+        13: {blastRadius: 660+30, radius: 32, damage: 0.93},
+        14: {blastRadius: 720+30, radius: 38, damage: 0.92 * 0.86},
+        15: {blastRadius: 740+30, radius: 44, damage: 0.95},
+        16: {blastRadius: 760+30, radius: 50, damage: 0.95},
+        17: {blastRadius: 780+30, radius: 56, damage: 0.95},
+        18: {blastRadius: 800+30, radius: 62, damage: 0.95},
+        
+      },
+      petalLayout: [[{}]],
+      damageScalers: ["damage"],
+      healthScalers: ["health"]
+    },
             'Coconut': {
                 'damage': 0.2,
                 'finalHitDamage': 0x3a7,
