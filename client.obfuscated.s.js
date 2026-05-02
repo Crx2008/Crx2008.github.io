@@ -2,7 +2,7 @@ let ver = document['scripts'][0x0]['src']['split']('v=')[0x1];
 if (!ver && location['host'] == 'localhost:8080')
     ver = 'Developer';
 let servers = { 'ws://localhost:8080/ws': 'Local' };
-HOST = 'wss://thoita-prod-7gydki1s27ab5d0f-1398459068.ap-shanghai.run.wxcloudrun.com/ws', HOST = 'ws://localhost:8080/ws', HOST = 'wss://ws.thoita.com:17033/ws';
+HOST = 'wss://thoita-prod-7gydki1s27ab5d0f-1398459068.ap-shanghai.run.wxcloudrun.com/ws', HOST = 'ws://localhost:8080/ws', HOST = 'wss://wss.thoita.com:17033/ws';
 let ws;
 window['state'] = localStorage['getItem']('hashedPassword') === null ? 'account' : 'menu', window['skipLogin'] = window['state'] === 'account' ? ![] : !![], window['connected'] = ![], window['spectating'] = ![], window['reconnectTries'] = 0x14, window['reconnecting'] = ![], window['reconnectStartTime'] = null, window['lastMessageTimeReceived'] = performance['now'](), window['keepAlive'] = [];
 function initWS() {
